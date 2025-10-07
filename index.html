@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>High-Performance EDA Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <div class="header__content">
+                <div class="header__titles">
+                    <h1 class="header__title">High-Performance EDA Platform</h1>
+                    <p class="header__subtitle">Algorithmic Data Analysis & Intelligent Visualization</p>
+                </div>
+                
+                <!-- File Upload Area -->
+                <div class="upload-section">
+                    <div class="upload-area" id="uploadArea">
+                        <div class="upload-area__content">
+                            <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
+                            </svg>
+                            <h3>Drop CSV file here or click to browse</h3>
+                            <p>Supports CSV files up to 10MB</p>
+                            <input type="file" id="fileInput" accept=".csv" class="file-input">
+                        </div>
+                    </div>
+                    
+                    <!-- Sample Data Selection -->
+                    <div class="sample-data">
+                        <h4>Or choose from sample datasets:</h4>
+                        <div class="sample-buttons">
+                            <button class="btn btn--outline btn--sm" data-sample="sales">Sales Performance</button>
+                            <button class="btn btn--outline btn--sm" data-sample="financial">Financial Market</button>
+                            <button class="btn btn--outline btn--sm" data-sample="scientific">Scientific Data</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Dataset Info -->
+            <div class="dataset-info hidden" id="datasetInfo">
+                <div class="card">
+                    <div class="card__body">
+                        <h3>Dataset Overview</h3>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <span class="info-label">Rows:</span>
+                                <span class="info-value" id="rowCount">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Columns:</span>
+                                <span class="info-value" id="columnCount">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">File Size:</span>
+                                <span class="info-value" id="fileSize">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Data Types:</span>
+                                <span class="info-value" id="dataTypes">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Table Section -->
+            <div class="data-section hidden" id="dataSection">
+                <div class="section-header">
+                    <h2>Complete Dataset</h2>
+                    <div class="table-controls">
+                        <input type="text" class="form-control search-input" id="searchInput" placeholder="Search data...">
+                        <button class="btn btn--outline btn--sm" id="exportBtn">Export Data</button>
+                    </div>
+                </div>
+                
+                <div class="table-container">
+                    <table class="data-table" id="dataTable">
+                        <thead id="tableHeader"></thead>
+                        <tbody id="tableBody"></tbody>
+                    </table>
+                </div>
+                
+                <div class="pagination" id="pagination">
+                    <button class="btn btn--outline btn--sm" id="prevPage">Previous</button>
+                    <span class="page-info" id="pageInfo">Page 1 of 1</span>
+                    <button class="btn btn--outline btn--sm" id="nextPage">Next</button>
+                </div>
+            </div>
+
+            <!-- Column Selection Section -->
+            <div class="column-selection hidden" id="columnSelection">
+                <div class="card">
+                    <div class="card__body">
+                        <h3>Column Selection (Select 2-3 columns)</h3>
+                        <div class="column-grid" id="columnGrid"></div>
+                        <div class="selection-actions">
+                            <button class="btn btn--secondary btn--sm" id="clearSelection">Clear Selection</button>
+                            <button class="btn btn--primary" id="analyzeBtn" disabled>Analyze Selected Columns</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Statistical Profile Dashboard -->
+            <div class="stats-dashboard hidden" id="statsDashboard">
+                <h2>Statistical Profile</h2>
+                <div class="stats-grid" id="statsGrid"></div>
+            </div>
+
+            <!-- Visualization Section -->
+            <div class="visualization-section hidden" id="visualizationSection">
+                <h2>Automated Visualizations</h2>
+                <div class="charts-container" id="chartsContainer"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay hidden" id="loadingOverlay">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p>Processing data...</p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
